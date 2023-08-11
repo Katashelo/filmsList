@@ -19,7 +19,7 @@ const TopRatedMovies = () => {
     if (error) {
         return <div>Помилка: {error.message}</div>;
     } else if (!isLoaded) {
-        return <div>Завантаження...</div>;
+        return <div>Завантаження....</div>;
     } else {
 
         const imagePath = "https://image.tmdb.org/t/p/w300"
@@ -31,7 +31,7 @@ const TopRatedMovies = () => {
         }
         return (
             <div>
-                <h1 className='title' > Favourite Movies </h1>
+                <h1 className='title' > Ranking Movies </h1>
                 <Pagination />
                 <ul className='app-wrapper' >
                     {items && items.items.map(item => (
