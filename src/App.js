@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './app.css'
+import ThemeButton from './ThemeButton';
+import FilmsPopulars111 from './FilmsPopular111';
+import Navbar from './Navbar/Navbar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import TopRatedMovies from './TopRatedMovies';
+import TVShow from './TVShow';
 
-function App() {
+
+
+const App = (props) => {
+
+  const [theme, setTheme] = useState('light');
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+
+    <div >
+      <div onClick={toggleTheme}>
+        <ThemeButton />
+      </div>
+      <Navbar />
+      <Routes>
+
+        <Route path="/" exact element={<FilmsPopulars111 />} />
+        <Route path="/TopRatedMovies" element={<TopRatedMovies />} />
+        <Route path="/TVShows" element={<TVShow />} />
+      </Routes>
+
+
+
     </div>
   );
 }
 
+
 export default App;
+
+
