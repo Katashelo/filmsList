@@ -31,7 +31,7 @@ const TopRatedMovies = () => {
         }
         return (
             <div>
-                <h1 className='title' > Favourite Movies </h1>
+                <h1 className='title' > Ranking Movies </h1>
                 <Pagination />
                 <ul className='app-wrapper' >
                     {items && items.items.map(item => (
