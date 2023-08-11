@@ -19,7 +19,7 @@ const TopRatedMovies = () => {
     if (error) {
         return <div>Помилка: {error.message}</div>;
     } else if (!isLoaded) {
-        return <div>Завантаження...</div>;
+        return <div>Завантаження....</div>;
     } else {
 
         const imagePath = "https://image.tmdb.org/t/p/w300"
