@@ -9,10 +9,6 @@ const useFetchMovies = (url) => {
     const [ currentPage, setCurrentPage ] = useState()
     const [ totalPage, setTotalPage ] = useState()
 
-    // const [data, setData] = useState();
-    // const [error, setError] = useState();
-    // const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         fetch(url)
             .then(res => res.json())

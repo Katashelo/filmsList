@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Pagination from "./Pagination";
-import PopUp from "./PopUp";
-import useFetchMovies from "./useFetchMovies";
+import Pagination from "../../Pagination/Pagination";
+import useFetchMovies from "../../API/useFetchMovies";
+
 
 const FilmsPopulars111 = (props) => {
 
@@ -29,18 +29,6 @@ const FilmsPopulars111 = (props) => {
             <div>
                 <h1 className='title' > Favourite Movies </h1>
                 <Pagination elements={itemy.length} items={items.items}/>
-                {/* <ul className='app-wrapper' >
-                    {items && items.items.map(item => (
-                        <li key={item.id}>
-                            <div  >{item.title} </div>
-                            <div >
-                                <PopUp image={item.poster_path} imagePath={imagePath} relise={item.release_date} rank={item.popularity} />
-                            </div>
-                            <Ranking rnk={item.popularity} />
-                            <div className='overview' >{item.overview}</div>
-                        </li>
-                    ))}
-                </ul> */}
             </div>
         );
     }
