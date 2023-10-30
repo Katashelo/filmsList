@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import FilmsPopulars111 from "./FilmsPopular111";
-import PopUp from "./PopUp";
+import PopUp from "../ModalWindow/PopUp";
+import { useDispatch } from 'react-redux';
+import { addToFilm } from "../store/action";
+import { initialState } from "../store/initialState";
 
 const Pagination = (props) => {
 
@@ -29,21 +31,25 @@ const Pagination = (props) => {
   const Ranking = (props) => {
     const [isToggleOn, setIsToggleOn] = useState(true)
     const handleClick = () => {
-        if (isToggleOn === true) {
-            setIsToggleOn(false);
-        } else {
-            setIsToggleOn(true)
-        }
+      if (isToggleOn === true) {
+        setIsToggleOn(false);
+      } else {
+        setIsToggleOn(true)
+      }
     }
-   
-    
     return <button onClick={handleClick}>
-        {isToggleOn ? "Rate Switch" : props.rnk + " " + 'Hide Rate'}
+      {isToggleOn ? "Rate Switch" : props.rnk + " " + 'Hide Rate'}
     </button>
+  }
+
+const dispatch = useDispatch()
+const handleAddFilm = item => {
+  dispatch(addToFilm(item))
 }
-
-const imagePath = "https://image.tmdb.org/t/p/w300"
-
+const AddMyFavorite = (props) => (
+  <button onClick={handleAddFilm(props.item)} >Add to my favorite</button>
+)
+  const imagePath = "https://image.tmdb.org/t/p/w300"
   return (
     <div>
       <div> All Pages: {pageNumbers.length}</div>
@@ -68,6 +74,8 @@ const imagePath = "https://image.tmdb.org/t/p/w300"
             <div> {item.title} </div>
             <div >
               <PopUp image={item.poster_path} imagePath={imagePath} relise={item.release_date} rank={item.popularity} />
+              {/* <AddMyFavorite item={item.title} /> */}
+              <button onClick={handleAddFilm(item.title)} >Add to my favorite</button>
             </div>
             <Ranking rnk={item.popularity} />
             <div className='overview' >{item.overview}</div>
